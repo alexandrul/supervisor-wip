@@ -15,19 +15,6 @@
 import os
 import sys
 
-py_version = sys.version_info[:2]
-
-if py_version < (2, 7):
-    raise RuntimeError('On Python 2, Supervisor requires Python 2.7 or later')
-elif (3, 0) < py_version < (3, 4):
-    raise RuntimeError('On Python 3, Supervisor requires Python 3.4 or later')
-
-# setuptools is required as a runtime dependency only on
-# Python < 3.8.  See the comments in supervisor/compat.py.
-requires = [
-    "setuptools; python_version < '3.8'",
-]
-
 tests_require = []
 testing_extras = tests_require + [
     'pytest',
@@ -57,13 +44,7 @@ CLASSIFIERS = [
     'Topic :: System :: Monitoring',
     'Topic :: System :: Systems Administration',
     "Programming Language :: Python",
-    "Programming Language :: Python :: 2",
-    "Programming Language :: Python :: 2.7",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.4",
-    "Programming Language :: Python :: 3.5",
-    "Programming Language :: Python :: 3.6",
-    "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
@@ -91,7 +72,6 @@ dist = setup(
     author="Chris McDonough",
     author_email="chrism@plope.com",
     packages=find_packages(),
-    install_requires=requires,
     extras_require={
         'testing': testing_extras,
     },
